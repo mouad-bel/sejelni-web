@@ -8,8 +8,25 @@ export function Hero() {
   };
 
   return (
-    <section id="accueil" className="min-h-screen pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+    <section id="accueil" className="min-h-screen pt-16 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-20 h-20 bg-[#CAA53E]/15 rounded-full animate-float"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full animate-float-reverse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-40 left-20 w-12 h-12 bg-[#CAA53E]/25 rounded-full animate-pulse-glow" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-60 right-40 w-8 h-8 bg-white/15 rounded-full animate-float" style={{animationDelay: '0.5s'}}></div>
+        <div className="absolute bottom-60 right-10 w-24 h-24 bg-[#CAA53E]/8 rounded-full animate-float-reverse" style={{animationDelay: '3s'}}></div>
+        <div className="absolute top-80 left-1/3 w-6 h-6 bg-white/20 rounded-full animate-rotate-slow"></div>
+        <div className="absolute bottom-80 right-1/3 w-10 h-10 bg-[#CAA53E]/20 rounded-full animate-pulse-glow" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-30 left-1/2 w-14 h-14 bg-white/8 rounded-full animate-float" style={{animationDelay: '2.5s'}}></div>
+        <div className="absolute bottom-30 right-1/2 w-18 h-18 bg-[#CAA53E]/12 rounded-full animate-float-reverse" style={{animationDelay: '1.8s'}}></div>
+        <div className="absolute top-50 left-1/4 w-10 h-10 bg-white/12 rounded-full animate-pulse-glow" style={{animationDelay: '3.5s'}}></div>
+        <div className="absolute bottom-50 right-1/4 w-16 h-16 bg-[#CAA53E]/10 rounded-full animate-rotate-slow" style={{animationDelay: '0.8s'}}></div>
+        <div className="absolute top-70 left-2/3 w-12 h-12 bg-white/6 rounded-full animate-float" style={{animationDelay: '4.2s'}}></div>
+        <div className="absolute bottom-70 right-2/3 w-8 h-8 bg-[#CAA53E]/18 rounded-full animate-float-reverse" style={{animationDelay: '2.2s'}}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="inline-flex items-center bg-[#CAA53E]/20 text-white px-4 py-2 rounded-full text-sm font-medium border border-[#CAA53E]/30">

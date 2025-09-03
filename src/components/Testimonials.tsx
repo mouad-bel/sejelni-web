@@ -1,7 +1,34 @@
 import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useState, useEffect } from 'react';
 
 export function Testimonials() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [visibleTestimonials, setVisibleTestimonials] = useState<number[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Staggered animation for testimonials
+            testimonials.forEach((_, index) => {
+              setTimeout(() => {
+                setVisibleTestimonials(prev => [...prev, index]);
+              }, index * 200);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('avis');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
   const values = [
     {
       title: "Mission",
@@ -77,9 +104,28 @@ export function Testimonials() {
   ];
 
   return (
-    <section id="avis" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+    <section id="avis" className="py-20 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-12 left-16 w-14 h-14 bg-[#CAA53E]/10 rounded-full animate-float" style={{animationDelay: '2.2s'}}></div>
+        <div className="absolute top-36 right-20 w-18 h-18 bg-white/8 rounded-full animate-float-reverse" style={{animationDelay: '1.2s'}}></div>
+        <div className="absolute bottom-24 left-20 w-12 h-12 bg-[#CAA53E]/12 rounded-full animate-pulse-glow" style={{animationDelay: '3.5s'}}></div>
+        <div className="absolute top-65 right-16 w-10 h-10 bg-white/12 rounded-full animate-float" style={{animationDelay: '0.7s'}}></div>
+        <div className="absolute bottom-50 right-24 w-16 h-16 bg-[#CAA53E]/7 rounded-full animate-float-reverse" style={{animationDelay: '2.8s'}}></div>
+        <div className="absolute top-85 left-1/4 w-8 h-8 bg-white/15 rounded-full animate-rotate-slow" style={{animationDelay: '1.9s'}}></div>
+        <div className="absolute bottom-80 right-1/3 w-20 h-20 bg-[#CAA53E]/6 rounded-full animate-pulse-glow" style={{animationDelay: '4.1s'}}></div>
+        <div className="absolute top-25 left-1/2 w-22 h-22 bg-white/6 rounded-full animate-float" style={{animationDelay: '3.8s'}}></div>
+        <div className="absolute bottom-25 right-1/2 w-14 h-14 bg-[#CAA53E]/8 rounded-full animate-float-reverse" style={{animationDelay: '1.6s'}}></div>
+        <div className="absolute top-55 left-1/3 w-16 h-16 bg-white/9 rounded-full animate-pulse-glow" style={{animationDelay: '4.5s'}}></div>
+        <div className="absolute bottom-55 right-1/3 w-12 h-12 bg-[#CAA53E]/11 rounded-full animate-rotate-slow" style={{animationDelay: '0.9s'}}></div>
+        <div className="absolute top-75 left-2/3 w-18 h-18 bg-white/7 rounded-full animate-float" style={{animationDelay: '2.4s'}}></div>
+        <div className="absolute bottom-75 right-2/3 w-10 h-10 bg-[#CAA53E]/9 rounded-full animate-float-reverse" style={{animationDelay: '3.2s'}}></div>
+        <div className="absolute top-95 left-1/5 w-6 h-6 bg-white/13 rounded-full animate-pulse-glow" style={{animationDelay: '1.4s'}}></div>
+        <div className="absolute bottom-95 right-1/5 w-24 h-24 bg-[#CAA53E]/5 rounded-full animate-rotate-slow" style={{animationDelay: '4.8s'}}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Ce que disent nos clients
           </h2>
@@ -91,7 +137,11 @@ export function Testimonials() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-white/10 backdrop-blur-sm border border-[#CAA53E]/20 hover:shadow-xl hover:border-[#CAA53E]/40 transition-all duration-300">
+            <Card key={index} className={`bg-white/10 backdrop-blur-sm border border-[#CAA53E]/20 hover:shadow-xl hover:border-[#CAA53E]/40 transition-all duration-500 hover:-translate-y-2 hover:scale-105 group ${
+              visibleTestimonials.includes(index) 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -172,21 +222,21 @@ export function Testimonials() {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-[#CAA53E] mb-2">50K+</div>
-              <div className="text-white/80">Étudiants accompagnés</div>
+            <div className="group cursor-pointer transition-all duration-300 hover:scale-110 hover:bg-white/5 p-4 rounded-lg">
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2 transition-all duration-300 group-hover:text-white group-hover:scale-110">50K+</div>
+              <div className="text-white/80 transition-colors duration-300 group-hover:text-white">Étudiants accompagnés</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-[#CAA53E] mb-2">4.8/5</div>
-              <div className="text-white/80">Satisfaction client</div>
+            <div className="group cursor-pointer transition-all duration-300 hover:scale-110 hover:bg-white/5 p-4 rounded-lg">
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2 transition-all duration-300 group-hover:text-white group-hover:scale-110">4.8/5</div>
+              <div className="text-white/80 transition-colors duration-300 group-hover:text-white">Satisfaction client</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-[#CAA53E] mb-2">200+</div>
-              <div className="text-white/80">Agences partenaires</div>
+            <div className="group cursor-pointer transition-all duration-300 hover:scale-110 hover:bg-white/5 p-4 rounded-lg">
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2 transition-all duration-300 group-hover:text-white group-hover:scale-110">200+</div>
+              <div className="text-white/80 transition-colors duration-300 group-hover:text-white">Agences partenaires</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-[#CAA53E] mb-2">24/7</div>
-              <div className="text-white/80">Support étudiant</div>
+            <div className="group cursor-pointer transition-all duration-300 hover:scale-110 hover:bg-white/5 p-4 rounded-lg">
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2 transition-all duration-300 group-hover:text-white group-hover:scale-110">24/7</div>
+              <div className="text-white/80 transition-colors duration-300 group-hover:text-white">Support étudiant</div>
             </div>
           </div>
         </div>

@@ -60,7 +60,7 @@ export function Pricing() {
     {
       name: "Pro",
       price: "249 DH",
-      duration: "/mois",
+      duration: "à vie",
       description: "La solution complète pour votre réussite académique",
       features: [
         { text: "Accompagnement personnalisé", included: true },
@@ -79,8 +79,27 @@ export function Pricing() {
   ];
 
   return (
-    <section id="tarifs" className="py-20">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+    <section id="tarifs" className="py-20 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-14 left-18 w-16 h-16 bg-[#CAA53E]/8 rounded-full animate-float" style={{animationDelay: '1.8s'}}></div>
+        <div className="absolute top-38 right-22 w-12 h-12 bg-white/10 rounded-full animate-float-reverse" style={{animationDelay: '3.1s'}}></div>
+        <div className="absolute bottom-26 left-22 w-14 h-14 bg-[#CAA53E]/12 rounded-full animate-pulse-glow" style={{animationDelay: '0.9s'}}></div>
+        <div className="absolute top-68 right-14 w-10 h-10 bg-white/12 rounded-full animate-float" style={{animationDelay: '2.4s'}}></div>
+        <div className="absolute bottom-52 right-18 w-18 h-18 bg-[#CAA53E]/7 rounded-full animate-float-reverse" style={{animationDelay: '1.3s'}}></div>
+        <div className="absolute top-88 left-1/3 w-6 h-6 bg-white/15 rounded-full animate-rotate-slow" style={{animationDelay: '3.7s'}}></div>
+        <div className="absolute bottom-75 right-1/4 w-22 h-22 bg-[#CAA53E]/6 rounded-full animate-pulse-glow" style={{animationDelay: '2.9s'}}></div>
+        <div className="absolute top-28 left-1/2 w-20 h-20 bg-white/7 rounded-full animate-float" style={{animationDelay: '4.2s'}}></div>
+        <div className="absolute bottom-28 right-1/2 w-12 h-12 bg-[#CAA53E]/9 rounded-full animate-float-reverse" style={{animationDelay: '1.7s'}}></div>
+        <div className="absolute top-48 left-1/4 w-16 h-16 bg-white/8 rounded-full animate-pulse-glow" style={{animationDelay: '4.6s'}}></div>
+        <div className="absolute bottom-48 right-1/4 w-14 h-14 bg-[#CAA53E]/10 rounded-full animate-rotate-slow" style={{animationDelay: '0.5s'}}></div>
+        <div className="absolute top-78 left-2/3 w-8 h-8 bg-white/11 rounded-full animate-float" style={{animationDelay: '2.7s'}}></div>
+        <div className="absolute bottom-78 right-2/3 w-18 h-18 bg-[#CAA53E]/5 rounded-full animate-float-reverse" style={{animationDelay: '3.9s'}}></div>
+        <div className="absolute top-98 left-1/5 w-10 h-10 bg-white/9 rounded-full animate-pulse-glow" style={{animationDelay: '1.1s'}}></div>
+        <div className="absolute bottom-98 right-1/5 w-24 h-24 bg-[#CAA53E]/4 rounded-full animate-rotate-slow" style={{animationDelay: '4.9s'}}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
           Tarif simple et transparent
@@ -221,11 +240,11 @@ export function Pricing() {
                 <div className="flex justify-between items-center">
                   <div>
                     <h4 className="font-semibold text-gray-900">Plan Pro</h4>
-                    <p className="text-sm text-gray-600">Facturation mensuelle</p>
+                    <p className="text-sm text-gray-600">Accès permanent</p>
                   </div>
                   <div className="text-right">
                     <div className="text-xl font-bold text-[#CAA53E]">249 DH</div>
-                    <div className="text-sm text-gray-600">/mois</div>
+                    <div className="text-sm text-gray-600">paiement unique</div>
                   </div>
                 </div>
               </div>

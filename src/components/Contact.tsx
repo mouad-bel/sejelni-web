@@ -59,8 +59,30 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-16 left-14 w-18 h-18 bg-[#CAA53E]/10 rounded-full animate-float" style={{animationDelay: '2.6s'}}></div>
+        <div className="absolute top-42 right-18 w-14 h-14 bg-white/8 rounded-full animate-float-reverse" style={{animationDelay: '1.4s'}}></div>
+        <div className="absolute bottom-28 left-18 w-16 h-16 bg-[#CAA53E]/12 rounded-full animate-pulse-glow" style={{animationDelay: '3.3s'}}></div>
+        <div className="absolute top-72 right-12 w-12 h-12 bg-white/12 rounded-full animate-float" style={{animationDelay: '0.6s'}}></div>
+        <div className="absolute bottom-54 right-20 w-20 h-20 bg-[#CAA53E]/7 rounded-full animate-float-reverse" style={{animationDelay: '2.1s'}}></div>
+        <div className="absolute top-92 left-1/4 w-8 h-8 bg-white/15 rounded-full animate-rotate-slow" style={{animationDelay: '4.2s'}}></div>
+        <div className="absolute bottom-82 right-1/3 w-24 h-24 bg-[#CAA53E]/6 rounded-full animate-pulse-glow" style={{animationDelay: '1.7s'}}></div>
+        <div className="absolute top-55 left-1/2 w-10 h-10 bg-white/10 rounded-full animate-float" style={{animationDelay: '3.8s'}}></div>
+        <div className="absolute top-26 left-1/3 w-22 h-22 bg-white/6 rounded-full animate-float" style={{animationDelay: '4.7s'}}></div>
+        <div className="absolute bottom-26 right-1/3 w-12 h-12 bg-[#CAA53E]/9 rounded-full animate-float-reverse" style={{animationDelay: '1.9s'}}></div>
+        <div className="absolute top-46 left-1/5 w-16 h-16 bg-white/9 rounded-full animate-pulse-glow" style={{animationDelay: '5.1s'}}></div>
+        <div className="absolute bottom-46 right-1/5 w-14 h-14 bg-[#CAA53E]/11 rounded-full animate-rotate-slow" style={{animationDelay: '0.8s'}}></div>
+        <div className="absolute top-66 left-2/3 w-18 h-18 bg-white/7 rounded-full animate-float" style={{animationDelay: '2.9s'}}></div>
+        <div className="absolute bottom-66 right-2/3 w-10 h-10 bg-[#CAA53E]/8 rounded-full animate-float-reverse" style={{animationDelay: '4.0s'}}></div>
+        <div className="absolute top-86 left-1/6 w-6 h-6 bg-white/13 rounded-full animate-pulse-glow" style={{animationDelay: '1.2s'}}></div>
+        <div className="absolute bottom-86 right-1/6 w-26 h-26 bg-[#CAA53E]/5 rounded-full animate-rotate-slow" style={{animationDelay: '5.3s'}}></div>
+        <div className="absolute top-36 left-3/4 w-12 h-12 bg-white/8 rounded-full animate-float" style={{animationDelay: '3.5s'}}></div>
+        <div className="absolute bottom-36 right-3/4 w-20 h-20 bg-[#CAA53E]/6 rounded-full animate-float-reverse" style={{animationDelay: '2.3s'}}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Contactez-nous
@@ -178,15 +200,15 @@ export function Contact() {
                 </h3>
                 <div className="space-y-6 flex-1">
                   {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center">
-                      <div className="flex-shrink-0 w-12 h-12 bg-[#CAA53E]/20 text-[#CAA53E] rounded-lg flex items-center justify-center">
+                    <div key={index} className="flex items-center group cursor-pointer transition-all duration-300 hover:bg-white/5 p-3 rounded-lg hover:scale-105">
+                      <div className="flex-shrink-0 w-12 h-12 bg-[#CAA53E]/20 text-[#CAA53E] rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#CAA53E] group-hover:text-white group-hover:scale-110 mr-4">
                         <info.icon size={20} />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-white mb-1">
+                        <h4 className="font-semibold text-white mb-1 transition-colors duration-300 group-hover:text-[#CAA53E]">
                           {info.title}
                         </h4>
-                        <p className="text-sm text-white/80">
+                        <p className="text-sm text-white/80 transition-colors duration-300 group-hover:text-white/90">
                           {info.description}
                         </p>
                       </div>

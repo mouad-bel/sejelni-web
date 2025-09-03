@@ -1,6 +1,33 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { useState, useEffect } from 'react';
 
 export function Features() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [visibleFeatures, setVisibleFeatures] = useState<number[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Staggered animation for features
+            features.forEach((_, index) => {
+              setTimeout(() => {
+                setVisibleFeatures(prev => [...prev, index]);
+              }, index * 150);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('fonctionnalites');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
   const features = [
     {
       title: "Agences Vérifiées",
@@ -35,9 +62,25 @@ export function Features() {
   ];
 
   return (
-    <section id="fonctionnalites" className="py-20">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-        <div className="text-center mb-16">
+    <section id="fonctionnalites" className="py-20 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 left-20 w-16 h-16 bg-[#CAA53E]/12 rounded-full animate-float"></div>
+        <div className="absolute top-32 right-16 w-12 h-12 bg-white/8 rounded-full animate-float-reverse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 left-16 w-20 h-20 bg-[#CAA53E]/10 rounded-full animate-pulse-glow" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-60 right-32 w-8 h-8 bg-white/12 rounded-full animate-float" style={{animationDelay: '3s'}}></div>
+        <div className="absolute bottom-40 right-20 w-14 h-14 bg-[#CAA53E]/15 rounded-full animate-float-reverse" style={{animationDelay: '0.5s'}}></div>
+        <div className="absolute top-80 left-1/4 w-6 h-6 bg-white/15 rounded-full animate-rotate-slow"></div>
+        <div className="absolute top-25 left-1/2 w-18 h-18 bg-[#CAA53E]/8 rounded-full animate-float" style={{animationDelay: '2.8s'}}></div>
+        <div className="absolute bottom-25 right-1/2 w-10 h-10 bg-white/10 rounded-full animate-float-reverse" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-45 left-1/3 w-14 h-14 bg-[#CAA53E]/6 rounded-full animate-pulse-glow" style={{animationDelay: '3.8s'}}></div>
+        <div className="absolute bottom-45 right-1/3 w-12 h-12 bg-white/7 rounded-full animate-rotate-slow" style={{animationDelay: '0.9s'}}></div>
+        <div className="absolute top-75 left-2/3 w-8 h-8 bg-[#CAA53E]/14 rounded-full animate-float" style={{animationDelay: '4.1s'}}></div>
+        <div className="absolute bottom-75 right-2/3 w-16 h-16 bg-white/5 rounded-full animate-float-reverse" style={{animationDelay: '2.3s'}}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#CAA53E] mb-6">
             Pourquoi choisir nos agences partenaires ?
           </h2>
@@ -48,7 +91,11 @@ export function Features() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+            <Card key={index} className={`group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer ${
+              visibleFeatures.includes(index) 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
               <CardContent className="p-0 relative h-80">
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-110"
