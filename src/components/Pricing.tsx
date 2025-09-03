@@ -1,11 +1,13 @@
-import { Check, X, Crown, Zap, ChevronDown } from 'lucide-react';
+import { Check, X, Crown, Zap, ChevronDown, Building2, Lock, ArrowLeft, Copy } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 
 export function Pricing() {
   const [openQuestions, setOpenQuestions] = useState<number[]>([]);
-  const [showAllQuestions, setShowAllQuestions] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const toggleQuestion = (index: number) => {
     setOpenQuestions(prev => 
@@ -15,8 +17,14 @@ export function Pricing() {
     );
   };
 
-  const toggleShowAllQuestions = () => {
-    setShowAllQuestions(!showAllQuestions);
+  const copyToClipboard = async (text: string, fieldName: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(fieldName);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
   };
 
   const faqData = [
@@ -46,65 +54,27 @@ export function Pricing() {
     }
   ];
 
-  const displayedQuestions = showAllQuestions ? faqData : faqData.slice(0, 3);
+
 
   const plans = [
     {
-      name: "Starter",
-      price: "Gratuit",
-      duration: "À vie",
-      description: "Parfait pour découvrir Sejelni",
-      features: [
-        { text: "Jusqu'à 3 utilisateurs", included: true },
-        { text: "5 projets maximum", included: true },
-        { text: "Stockage 1GB", included: true },
-        { text: "Support par email", included: true },
-        { text: "Analytics de base", included: true },
-        { text: "Intégrations tierces", included: false },
-        { text: "Support prioritaire", included: false },
-        { text: "Analytics avancés", included: false },
-        { text: "API access", included: false }
-      ],
-      popular: false,
-      cta: "Commencer gratuitement"
-    },
-    {
       name: "Pro",
-      price: "29€",
+      price: "249 DH",
       duration: "/mois",
-      description: "Pour les équipes en croissance",
+      description: "La solution complète pour votre réussite académique",
       features: [
-        { text: "Jusqu'à 25 utilisateurs", included: true },
-        { text: "Projets illimités", included: true },
-        { text: "Stockage 100GB", included: true },
-        { text: "Support prioritaire", included: true },
-        { text: "Analytics avancés", included: true },
-        { text: "Intégrations tierces", included: true },
-        { text: "Automatisations", included: true },
-        { text: "Rapports personnalisés", included: true },
-        { text: "API access", included: false }
+        { text: "Accompagnement personnalisé", included: true },
+        { text: "Accès à toutes les agences certifiées", included: true },
+        { text: "Support prioritaire 24/7", included: true },
+        { text: "Suivi complet de votre dossier", included: true },
+        { text: "Conseils d'experts en éducation", included: true },
+        { text: "Garantie satisfaction 30 jours", included: true },
+        { text: "Accès aux bourses et aides", included: true },
+        { text: "Préparation aux entretiens", included: true },
+        { text: "Assistance visa et documents", included: true }
       ],
       popular: true,
-      cta: "Essai gratuit 14 jours"
-    },
-    {
-      name: "Enterprise",
-      price: "99€",
-      duration: "/mois",
-      description: "Pour les grandes organisations",
-      features: [
-        { text: "Utilisateurs illimités", included: true },
-        { text: "Projets illimités", included: true },
-        { text: "Stockage 1TB", included: true },
-        { text: "Support 24/7 dédié", included: true },
-        { text: "Analytics enterprise", included: true },
-        { text: "Intégrations avancées", included: true },
-        { text: "Automatisations avancées", included: true },
-        { text: "Rapports personnalisés", included: true },
-        { text: "API access complet", included: true }
-      ],
-      popular: false,
-      cta: "Contacter les ventes"
+      cta: "Commencer maintenant"
     }
   ];
 
@@ -112,32 +82,26 @@ export function Pricing() {
     <section id="tarifs" className="py-20">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            Tarifs simples et transparents
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+          Tarif simple et transparent
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Choisissez le plan qui correspond parfaitement à vos besoins. 
-            Tous nos plans incluent une garantie satisfaction de 30 jours.
+          <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+            Découvrez notre plan Pro qui inclut toutes les fonctionnalités essentielles 
+            pour votre réussite académique avec une garantie satisfaction de 30 jours.
           </p>
-          <div className="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
-            <Zap className="w-4 h-4 mr-2" />
-            Économisez 20% avec la facturation annuelle
-          </div>
+
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="flex justify-center mb-16">
+          <div className="w-full max-w-lg">
           {plans.map((plan, index) => (
             <Card 
               key={index} 
-              className={`relative hover:shadow-xl transition-all duration-300 ${
-                plan.popular 
-                  ? 'ring-2 ring-blue-500 shadow-xl scale-105' 
-                  : 'hover:-translate-y-1'
-              }`}
+              className="relative bg-white/10 backdrop-blur-sm border border-[#CAA53E]/20 hover:shadow-xl hover:border-[#CAA53E]/40 transition-all duration-300 hover:scale-105 w-full"
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium flex items-center">
+                  <div className="bg-[#CAA53E] text-white px-4 py-1 rounded-full text-sm font-medium flex items-center">
                     <Crown className="w-4 h-4 mr-1" />
                     Le plus populaire
                   </div>
@@ -145,18 +109,18 @@ export function Pricing() {
               )}
               
               <CardHeader className="text-center pb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   {plan.name}
                 </h3>
                 <div className="mb-4">
-                  <span className="text-4xl font-bold text-gray-900">
+                  <span className="text-4xl font-bold text-white">
                     {plan.price}
                   </span>
-                  <span className="text-gray-600">
+                  <span className="text-white/80">
                     {plan.duration}
                   </span>
                 </div>
-                <p className="text-gray-600">
+                <p className="text-white/90">
                   {plan.description}
                 </p>
               </CardHeader>
@@ -170,7 +134,7 @@ export function Pricing() {
                       ) : (
                         <X className="w-5 h-5 text-gray-300 mr-3 flex-shrink-0" />
                       )}
-                      <span className={feature.included ? 'text-gray-900' : 'text-gray-500'}>
+                      <span className={feature.included ? 'text-white' : 'text-white/60'}>
                         {feature.text}
                       </span>
                     </li>
@@ -178,46 +142,49 @@ export function Pricing() {
                 </ul>
                 
                 <Button 
-                  className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : ''}`}
-                  variant={plan.popular ? 'default' : 'outline'}
+                  className="w-full bg-[#CAA53E] hover:bg-[#CAA53E]/90"
+                  onClick={() => setShowPaymentModal(true)}
                 >
                   {plan.cta}
                 </Button>
               </CardContent>
             </Card>
           ))}
+          </div>
         </div>
 
-        <div className="bg-gray-50 rounded-3xl p-12">
+        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 border border-[#CAA53E]/20">
           <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6">
               Questions fréquemment posées
             </h3>
-           
+            <p className="text-white/80 max-w-2xl mx-auto">
+              Trouvez rapidement les réponses à vos questions les plus courantes
+            </p>
           </div>
           
           <div className="max-w-3xl mx-auto space-y-4">
-            {displayedQuestions.map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-transparent rounded-xl transition-all duration-300 border border-[#CAA53E] hover:bg-[#CAA53E] hover:shadow-lg">
                 <button
                   onClick={() => toggleQuestion(index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 rounded-xl bg-white"
+                  className="w-full p-6 text-left flex items-center justify-between bg-transparent hover:bg-transparent transition-all duration-300 rounded-xl group"
                 >
-                  <h4 className="text-lg font-semibold text-gray-900 pr-4">
+                  <h4 className="text-lg font-semibold text-[#CAA53E] pr-4 group-hover:text-white transition-colors duration-300">
                     {faq.question}
                   </h4>
                   <ChevronDown 
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${
-                      openQuestions.includes(index) ? 'rotate-180' : ''
+                    className={`w-5 h-5 text-[#CAA53E] transition-all duration-300 ${
+                      openQuestions.includes(index) ? 'rotate-180 text-white' : 'group-hover:text-white'
                     }`}
                   />
                 </button>
                 
-                <div className={`overflow-hidden transition-all duration-300 ${
-                  openQuestions.includes(index) ? 'max-h-40' : 'max-h-0'
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  openQuestions.includes(index) ? 'max-h-60' : 'max-h-0'
                 }`}>
-                  <div className="px-6 pb-6 bg-white">
-                    <p className="text-gray-600 leading-relaxed">
+                  <div className="px-6 pb-6 bg-transparent">
+                    <p className="text-white/90 leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -226,21 +193,114 @@ export function Pricing() {
             ))}
           </div>
           
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
-              {showAllQuestions ? "Vous avez vu toutes les questions." : "Vous ne trouvez pas la réponse à votre question ?"}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" onClick={toggleShowAllQuestions}>
-                {showAllQuestions ? "Voir moins de questions" : "Voir toutes les questions"}
-              </Button>
-              <Button>
-                Contacter le support
-              </Button>
+
+        </div>
+      </div>
+
+      {/* Bank Transfer Modal */}
+      {showPaymentModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center">
+                  <Building2 className="w-6 h-6 text-[#CAA53E] mr-2" />
+                  <h3 className="text-xl font-bold text-gray-900">Virement bancaire</h3>
+                </div>
+                <button
+                  onClick={() => setShowPaymentModal(false)}
+                  className="text-gray-500 hover:text-gray-700 transition-colors bg-white hover:bg-gray-50 p-1 rounded-full"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              {/* Plan Summary */}
+              <div className="bg-[#0C1943]/5 rounded-lg p-4 mb-6 border border-[#CAA53E]/20">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Plan Pro</h4>
+                    <p className="text-sm text-gray-600">Facturation mensuelle</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-xl font-bold text-[#CAA53E]">249 DH</div>
+                    <div className="text-sm text-gray-600">/mois</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bank Information */}
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Informations de virement</h4>
+                
+                {/* Combined Bank Details */}
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-600 mb-1">
+                        Nom de la banque
+                      </label>
+                      <span className="text-gray-900 font-medium">Attijariwafa Bank</span>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-600 mb-1">
+                        Titulaire du compte
+                      </label>
+                      <span className="text-gray-900 font-medium">SEJELNI SARL</span>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-600 mb-1">
+                        Numéro de compte
+                      </label>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-900 font-mono text-lg">007 780 000 1234567890 12</span>
+                        <button
+                          onClick={() => copyToClipboard('007 780 000 1234567890 12', 'account')}
+                          className="flex items-center text-[#CAA53E] hover:text-[#CAA53E]/80 transition-colors bg-white px-3 py-1 rounded-md border border-[#CAA53E]/20 hover:bg-[#CAA53E]/5"
+                        >
+                          <Copy className="w-4 h-4 mr-1" />
+                          {copiedField === 'account' ? 'Copié!' : 'Copier'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Instructions */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <h5 className="font-semibold text-blue-900 mb-2">Instructions importantes :</h5>
+                <ul className="text-sm text-blue-800 space-y-1">
+                  <li>• Effectuez le virement avec la référence exacte</li>
+                  <li>• Votre compte sera activé sous 24h après réception</li>
+                  <li>• Conservez le reçu de virement comme preuve</li>
+                  <li>• Contactez-nous si vous avez des questions</li>
+                </ul>
+              </div>
+
+              {/* Contact Info */}
+              <div className="flex items-center bg-green-50 p-3 rounded-lg mb-6">
+                <Lock className="w-4 h-4 text-green-600 mr-2" />
+                <p className="text-sm text-green-700">
+                  Besoin d'aide ? Contactez-nous au 0671434207
+                </p>
+              </div>
+
+              {/* Back Button */}
+              <button
+                onClick={() => setShowPaymentModal(false)}
+                className="w-full flex items-center justify-center text-[#CAA53E] hover:text-[#CAA53E]/80 transition-colors bg-white hover:bg-[#CAA53E]/10 py-3 px-4 rounded-lg border border-[#CAA53E]/20 font-medium"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Retour aux tarifs
+              </button>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

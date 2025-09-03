@@ -55,6 +55,9 @@ export default {
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))',
         },
+        // Sejelni Brand Colors
+        'sejelni-dark': '#0C1943',
+        'sejelni-gold': '#CAA53E',
       },
       keyframes: {
         'accordion-down': {

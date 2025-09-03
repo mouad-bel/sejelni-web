@@ -38,10 +38,10 @@ export function Features() {
     <section id="fonctionnalites" className="py-20">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#CAA53E] mb-6">
             Pourquoi choisir nos agences partenaires ?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto">
           Nous offrons une plateforme complète pour connecter les étudiants avec les meilleures agences éducatives
           </p>
         </div>
@@ -71,15 +71,15 @@ export function Features() {
           ))}
         </div>
 
-        <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center">
+        <div className="mt-20 bg-gradient-to-r from-[#0C1943] to-[#CAA53E] rounded-3xl p-12 text-center">
           <h3 className="text-3xl font-bold text-white mb-6">
             Prêt à partir étudier à l'étranger ?
           </h3>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Contactez nos agences partenaires et commencez votre aventure 
             d'études internationales dès aujourd'hui.
           </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300">
+          <button className="bg-[#CAA53E] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#CAA53E]/90 transition-colors duration-300">
             Commencer maintenant
           </button>
         </div>

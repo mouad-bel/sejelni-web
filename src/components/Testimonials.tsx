@@ -2,6 +2,29 @@ import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export function Testimonials() {
+  const values = [
+    {
+      title: "Mission",
+      description: "Connecter les étudiants marocains avec les meilleures agences éducatives pour faciliter leur accès aux études supérieures au Maroc et à l'étranger.",
+      backgroundImage: "url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
+    },
+    {
+      title: "Équipe",
+      description: "Une équipe d'experts en éducation internationale et en accompagnement étudiant, passionnée par la réussite académique des jeunes marocains.",
+      backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
+    },
+    {
+      title: "Innovation",
+      description: "Nous développons constamment de nouvelles solutions technologiques pour simplifier le processus de candidature et d'inscription universitaire.",
+      backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
+    },
+    {
+      title: "Excellence",
+      description: "Notre engagement envers la qualité de service et la satisfaction des étudiants guide chacune de nos recommandations d'agences partenaires.",
+      backgroundImage: "url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
+    }
+  ];
+
   const testimonials = [
     {
       name: "Marie Dubois",
@@ -54,13 +77,13 @@ export function Testimonials() {
   ];
 
   return (
-    <section id="avis" className="py-20 bg-gray-50">
+    <section id="avis" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
             Ce que disent nos clients
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto">
             Découvrez pourquoi plus de 50 000 utilisateurs font confiance à Sejelni 
             pour optimiser leur productivité au quotidien.
           </p>
@@ -68,7 +91,7 @@ export function Testimonials() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="hover:shadow-xl transition-shadow duration-300">
+            <Card key={index} className="bg-white/10 backdrop-blur-sm border border-[#CAA53E]/20 hover:shadow-xl hover:border-[#CAA53E]/40 transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -77,8 +100,8 @@ export function Testimonials() {
                 </div>
                 
                 <div className="mb-6">
-                  <Quote className="w-8 h-8 text-blue-200 mb-2" />
-                  <p className="text-gray-700 leading-relaxed">
+                  <Quote className="w-8 h-8 text-[#CAA53E] mb-2" />
+                  <p className="text-white/90 leading-relaxed">
                     {testimonial.content}
                   </p>
                 </div>
@@ -90,13 +113,13 @@ export function Testimonials() {
                     className="w-12 h-12 rounded-full object-cover mr-4"
                   />
                   <div>
-                    <div className="font-semibold text-gray-900">
+                    <div className="font-semibold text-white">
                       {testimonial.name}
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-white/80">
                       {testimonial.role}
                     </div>
-                    <div className="text-sm text-blue-600">
+                    <div className="text-sm text-[#CAA53E]">
                       {testimonial.company}
                     </div>
                   </div>
@@ -106,33 +129,64 @@ export function Testimonials() {
           ))}
         </div>
 
-        <div className="bg-white rounded-3xl p-12 shadow-lg">
+        {/* Nos valeurs fondamentales section */}
+        <div className="mt-20">
+          <h3 className="text-2xl font-bold text-white text-center mb-12">
+            Nos valeurs fondamentales
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <Card key={index} className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
+                <CardContent className="p-0 relative h-64">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-110"
+                    style={{ backgroundImage: value.backgroundImage }}
+                  >
+                    <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-all duration-500"></div>
+                  </div>
+                  <div className="relative z-10 h-full flex flex-col justify-center p-6 text-white text-center">
+                    <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                      <h4 className="text-xl font-bold mb-3 opacity-95 group-hover:opacity-100 transition-opacity duration-300 leading-tight">
+                        {value.title}
+                      </h4>
+                      <p className="text-sm leading-relaxed opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:text-base">
+                        {value.description}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 shadow-lg mt-20 border border-[#CAA53E]/20">
           <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Rejoignez des milliers d'utilisateurs satisfaits
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Rejoignez des milliers d'étudiants satisfaits
             </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Plus de 50 000 professionnels utilisent Sejelni quotidiennement 
-              pour optimiser leur productivité et celle de leurs équipes.
+            <p className="text-white/90 max-w-2xl mx-auto">
+              Plus de 50 000 étudiants font confiance à Sejelni pour trouver 
+              les meilleures agences éducatives et concrétiser leurs projets d'études.
             </p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">50K+</div>
-              <div className="text-gray-600">Utilisateurs actifs</div>
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2">50K+</div>
+              <div className="text-white/80">Étudiants accompagnés</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">4.8/5</div>
-              <div className="text-gray-600">Note moyenne</div>
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2">4.8/5</div>
+              <div className="text-white/80">Satisfaction client</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
-              <div className="text-gray-600">Disponibilité</div>
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2">200+</div>
+              <div className="text-white/80">Agences partenaires</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-              <div className="text-gray-600">Support client</div>
+              <div className="text-3xl font-bold text-[#CAA53E] mb-2">24/7</div>
+              <div className="text-white/80">Support étudiant</div>
             </div>
           </div>
         </div>
