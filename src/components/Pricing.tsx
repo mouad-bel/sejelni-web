@@ -1,7 +1,7 @@
-import { Check, X, Crown, Zap, ChevronDown, Building2, Lock, ArrowLeft, Copy } from 'lucide-react';
+import { Check, X, Crown, ChevronDown, Building2, Lock, ArrowLeft, Copy } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+// import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 
 export function Pricing() {
