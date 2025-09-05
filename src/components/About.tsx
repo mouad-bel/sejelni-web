@@ -47,11 +47,16 @@ export function About() {
               src="/about-image.png"
               alt="À propos de Sejelni - Plateforme éducative"
               className="w-full h-full object-cover rounded-2xl transition-all duration-500 group-hover:scale-105"
+              loading="lazy"
+              onError={(e) => {
+                console.log('Image failed to load:', e);
+                e.currentTarget.style.display = 'none';
+              }}
             />
             <div className="absolute inset-0 bg-black/20 rounded-2xl transition-all duration-300 group-hover:bg-black/40"></div>
           </div>
           
-          <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center py-16">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center py-8 lg:py-16">
             <div className="space-y-8 lg:ml-8">
               <div className="group">
                 <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 transform translate-x-[-100%] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-700 ease-out group-hover:text-[#CAA53E]">
