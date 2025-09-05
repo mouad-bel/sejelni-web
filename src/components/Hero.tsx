@@ -30,7 +30,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="inline-flex items-center bg-[#CAA53E]/20 text-white px-4 py-2 rounded-full text-sm font-medium border border-[#CAA53E]/30">
-              🚀 Nouvelle version disponible
+              Nouvelle version disponible
             </div>
             
             <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
