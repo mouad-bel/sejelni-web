@@ -36,6 +36,10 @@ jobs:
           git pull origin main
           npm install
           npm run build
+          # Copy images from public to dist if they exist
+          if [ -d "public" ]; then
+            cp public/*.png dist/ 2>/dev/null || true
+          fi
           cp -rf dist/* /var/www/html/
           systemctl reload nginx
           echo "Deployment completed successfully!"
