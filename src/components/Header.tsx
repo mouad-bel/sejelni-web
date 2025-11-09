@@ -11,6 +11,10 @@ export function Header() {
     setIsMenuOpen(false);
   };
 
+  const handleLogin = () => {
+    window.location.href = 'https://etudiant.sejelni.ma';
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 bg-[#0C1943] backdrop-blur-md border-b border-[#CAA53E]/20 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,8 +64,8 @@ export function Header() {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-white hover:text-[#CAA53E] hover:bg-[#CAA53E]/20 !bg-transparent">Se connecter</Button>
-            <Button className="bg-[#CAA53E] hover:bg-[#CAA53E]/90 text-white shadow-lg hover:shadow-xl transition-all duration-300">Commencer</Button>
+            <Button onClick={handleLogin} variant="ghost" className="text-white hover:text-[#CAA53E] hover:bg-[#CAA53E]/20 !bg-transparent">Se connecter</Button>
+            <Button onClick={() => scrollToSection('tarifs')} className="bg-[#CAA53E] hover:bg-[#CAA53E]/90 text-white shadow-lg hover:shadow-xl transition-all duration-300">Commencer</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -117,10 +121,10 @@ export function Header() {
                 Contact
               </button>
               <div className="flex flex-col space-y-2 px-3 pt-4">
-                <Button variant="outline" className="w-full text-gray-800 hover:text-[#CAA53E] hover:bg-[#CAA53E]/20 !bg-transparent border-[#CAA53E]/30">
+                <Button onClick={handleLogin} variant="outline" className="w-full text-gray-800 hover:text-[#CAA53E] hover:bg-[#CAA53E]/20 !bg-transparent border-[#CAA53E]/30">
                   Se connecter
                 </Button>
-                <Button className="w-full bg-[#CAA53E] hover:bg-[#CAA53E]/90 text-white">Commencer</Button>
+                <Button onClick={() => scrollToSection('tarifs')} className="w-full bg-[#CAA53E] hover:bg-[#CAA53E]/90 text-white">Commencer</Button>
               </div>
             </div>
           </div>

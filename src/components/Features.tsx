@@ -5,6 +5,11 @@ export function Features() {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleFeatures, setVisibleFeatures] = useState<number[]>([]);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -126,7 +131,7 @@ export function Features() {
             Contactez nos agences partenaires et commencez votre aventure 
             d'études internationales dès aujourd'hui.
           </p>
-          <button className="bg-[#CAA53E] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#CAA53E]/90 transition-colors duration-300">
+          <button onClick={() => scrollToSection('tarifs')} className="bg-[#CAA53E] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#CAA53E]/90 transition-colors duration-300">
             Commencer maintenant
           </button>
         </div>

@@ -48,7 +48,7 @@ export function Hero() {
               <Button 
                 size="lg" 
                 className="group bg-[#CAA53E] hover:bg-[#CAA53E]/90 text-white"
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('tarifs')}
               >
                 Commencer maintenant
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
