@@ -1,4 +1,4 @@
-import { Check, X, Crown, ChevronDown, Building2, Lock, ArrowLeft, Copy } from 'lucide-react';
+import { Check, X, Crown, ChevronDown, Building2, Lock, ArrowLeft, Copy, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 // import { Input } from '@/components/ui/input';
@@ -258,13 +258,6 @@ export function Pricing() {
                   <div className="space-y-3">
                     <div>
                       <label className="block text-sm font-medium text-gray-600 mb-1">
-                        Nom de la banque
-                      </label>
-                      <span className="text-gray-900 font-medium">Attijariwafa Bank</span>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-600 mb-1">
                         Titulaire du compte
                       </label>
                       <span className="text-gray-900 font-medium">SEJELNI SARL</span>
@@ -272,18 +265,25 @@ export function Pricing() {
                     
                     <div>
                       <label className="block text-sm font-medium text-gray-600 mb-1">
-                        Numéro de compte
+                        RIB
                       </label>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-900 font-mono text-lg">007 780 000 1234567890 12</span>
+                        <span className="text-gray-900 font-mono text-lg">230150392692321402790014</span>
                         <button
-                          onClick={() => copyToClipboard('007 780 000 1234567890 12', 'account')}
+                          onClick={() => copyToClipboard('230150392692321402790014', 'rib')}
                           className="flex items-center text-[#CAA53E] hover:text-[#CAA53E]/80 transition-colors bg-white px-3 py-1 rounded-md border border-[#CAA53E]/20 hover:bg-[#CAA53E]/5"
                         >
                           <Copy className="w-4 h-4 mr-1" />
-                          {copiedField === 'account' ? 'Copié!' : 'Copier'}
+                          {copiedField === 'rib' ? 'Copié!' : 'Copier'}
                         </button>
                       </div>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-600 mb-1">
+                        Adresse
+                      </label>
+                      <span className="text-gray-900 font-medium">Étage 4 N°34, 90 Rue Pierre Parent, Casablanca 20110</span>
                     </div>
                   </div>
                 </div>
@@ -301,11 +301,22 @@ export function Pricing() {
               </div>
 
               {/* Contact Info */}
-              <div className="flex items-center bg-green-50 p-3 rounded-lg mb-6">
-                <Lock className="w-4 h-4 text-green-600 mr-2" />
-                <p className="text-sm text-green-700">
-                  Besoin d'aide ? Contactez-nous au 0671434207
-                </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center bg-green-50 p-3 rounded-lg">
+                  <Lock className="w-4 h-4 text-green-600 mr-2" />
+                  <p className="text-sm text-green-700">
+                    Besoin d'aide ? Contactez-nous au +212689851888
+                  </p>
+                </div>
+                <a
+                  href="https://wa.me/212689851888"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-full bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium transition-colors duration-300"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Nous contacter sur WhatsApp
+                </a>
               </div>
 
               {/* Back Button */}
