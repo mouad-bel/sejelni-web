@@ -1,4 +1,4 @@
-import { Check, X, Crown, ChevronDown, Building2, Lock, ArrowLeft, Copy, MessageCircle } from 'lucide-react';
+import { Check, X, Crown, ChevronDown, Building2, Lock, ArrowLeft, Copy, Send } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 // import { Input } from '@/components/ui/input';
@@ -314,7 +314,7 @@ export function Pricing() {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-full bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium transition-colors duration-300"
                 >
-                  <MessageCircle className="w-5 h-5 mr-2" />
+                  <Send className="w-5 h-5 mr-2" />
                   Nous contacter sur WhatsApp
                 </a>
               </div>
