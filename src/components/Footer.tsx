@@ -58,7 +58,7 @@ export function Footer() {
               </div>
               <div className="flex items-center text-white/80">
                 <Phone className="w-4 h-4 mr-2" />
-                +33 1 23 45 67 89
+                +212 689 851 888
               </div>
             </div>
             <div className="flex space-x-4">
@@ -179,7 +179,7 @@ export function Footer() {
             
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/212691434207"
+              href="https://wa.me/212689851888?text=Bonjour%2C%20je%20souhaite%20obtenir%20plus%20d%27informations"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 border-2 border-white"

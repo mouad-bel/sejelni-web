@@ -305,11 +305,11 @@ export function Pricing() {
                 <div className="flex items-center bg-green-50 p-3 rounded-lg">
                   <Lock className="w-4 h-4 text-green-600 mr-2" />
                   <p className="text-sm text-green-700">
-                    Besoin d'aide ? Contactez-nous au +212689851888
+                    Besoin d'aide ? Contactez-nous au +212 689 851 888
                   </p>
                 </div>
                 <a
-                  href="https://wa.me/212689851888"
+                  href="https://wa.me/212689851888?text=Bonjour%2C%20je%20souhaite%20obtenir%20plus%20d%27informations%20sur%20le%20plan%20Pro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-full bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium transition-colors duration-300"

@@ -43,13 +43,13 @@ export function Contact() {
     },
     {
       icon: Phone,
-      title: "+33 1 23 45 67 89",
+      title: "+212 689 851 888",
       description: "Du lundi au vendredi, 9h-18h"
     },
     {
       icon: MapPin,
-      title: "123 Avenue des Champs-Élysées",
-      description: "75008 Paris, France"
+      title: "Étage 4 N°34, 90 Rue Pierre Parent",
+      description: "Casablanca 20110, Maroc"
     },
     {
       icon: Clock,
